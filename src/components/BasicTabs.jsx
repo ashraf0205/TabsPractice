@@ -39,7 +39,7 @@ function a11yProps(index) {
     "aria-controls": `simple-tabpanel-${index}`,
   };
 }
-//      *****************************************************************************************************
+//      **********************************************************************
 export default function BasicTabs() {
   const [value, setValue] = useState(0);
   const [rowsUsers, setRowsUsers] = useState([]);
@@ -136,7 +136,7 @@ export default function BasicTabs() {
   };
 
   return (
-    <Box sx={{ width: "70%", marginLeft: "auto", marginRight: "auto" }}>
+    <Box sx={{ width: "full", marginLeft: "auto", marginRight: "auto" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Tabs
           value={value}

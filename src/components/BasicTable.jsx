@@ -8,47 +8,78 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 export default function BasicTable({ rows, tableCell }) {
-  const [sorting, setSorting] = useState();
+  const [sorting, setSorting] = useState(rows);
+  const [order, setOrder] = useState("ASC");
 
   function handleSorting() {
-    // const sort = sort((a, b) => a.age - b.age)
-    // setSorting(sort)
+    const sort = rows.sort((a, b) => a.tableone - b.tableone);
+    setSorting(sort);
+
+    // setSorting(sorting.sort((a, b) => {
+    //   if (a < b) {
+    //     return -1;
+    //   } else if (a > b) {
+    //     return 1;
+    //   } else {
+    //     return 0;
+    //   }
+    // }));
+    // console.log(col);
+    // if (order === "ASC") {
+    //   const sorted = rows.sort((a, b) =>
+    //     a.col > b.col ? 1 : -1,
+    //     // console.log(a.col)
+    //   );
+    //   setSorting(sorted);
+    //   setOrder("DSC");
+    // }
+
+    // if (order === "DSC") {
+    //   const sorted = [...sorting].sort((a, b) =>
+    //     a.col < b.col ? 1 : -1
+    //   );
+    //   setSorting(sorted);
+    //   setOrder("ASC");
+    // }
   }
-  console.log(sorting);
+  
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ Width: "full" }} aria-label="simple table">
         <TableHead>
           <TableRow sx={{ background: "gray" }}>
-            <TableCell 
-            onClick={handleSorting}>
+            <TableCell>
               <h4 style={{ cursor: "pointer", display: "inline" }}>
                 {tableCell.cellone}
               </h4>
             </TableCell>
             <TableCell 
+            onClick={handleSorting} 
             align="right">
               <h4 style={{ cursor: "pointer", display: "inline" }}>
                 {tableCell.celltwo}
               </h4>
             </TableCell>
-            <TableCell 
-            align="right">
-              <h4 style={{ cursor: "pointer" }}>{tableCell.cellthree}</h4>
+            <TableCell align="right">
+              <h4 style={{ cursor: "pointer", display: "inline" }}>
+                {tableCell.cellthree}
+              </h4>
             </TableCell>
-            <TableCell 
-            align="right">
-              <h4 style={{ cursor: "pointer" }}>{tableCell.cellfour}</h4>
+            <TableCell align="right">
+              <h4 style={{ cursor: "pointer", display: "inline" }}>
+                {tableCell.cellfour}
+              </h4>
             </TableCell>
-            <TableCell 
-            align="right">
-              <h4 style={{ cursor: "pointer" }}>{tableCell.cellfive}</h4>
+            <TableCell align="right">
+              <h4 style={{ cursor: "pointer", display: "inline" }}>
+                {tableCell.cellfive}
+              </h4>
             </TableCell>
           </TableRow>
         </TableHead>
 
         <TableBody>
-          {rows.map((row) => (
+          {sorting.map((row) => (
             <TableRow
               key={row.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
